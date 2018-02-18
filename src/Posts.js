@@ -1,8 +1,13 @@
 import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 export default ({ posts }) => (
   <Fragment>
+    <Helmet>
+      <title>Posts</title>
+    </Helmet>
+
     <h1>Blog</h1>
 
     <ol>

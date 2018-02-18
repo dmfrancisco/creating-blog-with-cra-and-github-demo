@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 import Posts from "./Posts";
 import Post from "./Post";
@@ -7,15 +8,19 @@ import NotFound from "./NotFound";
 import data from "./data";
 
 export default () => (
-  <Router>
-    <Switch>
-      <Route exact path="/" render={routeProps => <Posts {...data} />} />
+  <Fragment>
+    <Helmet titleTemplate="%s | My Blog" />
 
-      {Object.entries(data.posts).map(([slug, post]) => (
-        <Route key={slug} exact path={`/${slug}`} render={({ match }) => <Post {...post} />} />
-      ))}
+    <Router>
+      <Switch>
+        <Route exact path="/" render={routeProps => <Posts {...data} />} />
 
-      <Route render={routeProps => <NotFound {...data} />} />
-    </Switch>
-  </Router>
+        {Object.entries(data.posts).map(([slug, post]) => (
+          <Route key={slug} exact path={`/${slug}`} render={({ match }) => <Post {...post} />} />
+        ))}
+
+        <Route render={routeProps => <NotFound {...data} />} />
+      </Switch>
+    </Router>
+  </Fragment>
 );
