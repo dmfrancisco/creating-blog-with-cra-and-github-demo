@@ -1,8 +1,13 @@
 import React, { Component, Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import base64 from "base-64";
 
-const headers = { Accept: "application/vnd.github.v3.json" };
+const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
+const headers = {
+  Accept: "application/vnd.github.v3.json",
+  Authorization: `Basic ${base64.encode(accessToken + ":")}`,
+};
 const mode = "gfm";
 
 export default class Post extends Component {
