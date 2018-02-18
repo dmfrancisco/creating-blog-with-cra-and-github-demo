@@ -8,7 +8,6 @@ const headers = {
   Accept: "application/vnd.github.v3.json",
   Authorization: `Basic ${base64.encode(accessToken + ":")}`,
 };
-const mode = "gfm";
 
 export default class Post extends Component {
   state = {
@@ -35,7 +34,7 @@ export default class Post extends Component {
     return fetch("https://api.github.com/markdown", {
       headers,
       method: "POST",
-      body: JSON.stringify({ mode, text }),
+      body: JSON.stringify({ text }),
     }).then(response => response.text());
   }
 

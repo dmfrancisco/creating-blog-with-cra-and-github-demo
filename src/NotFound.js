@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
-export default ({ nav }) => (
+export default () => (
   <Fragment>
     <Helmet>
       <title>404</title>

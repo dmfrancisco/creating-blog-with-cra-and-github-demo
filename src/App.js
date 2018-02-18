@@ -19,7 +19,7 @@ export default () => (
           <Route key={slug} exact path={`/${slug}`} render={({ match }) => <Post {...post} />} />
         ))}
 
-        <Route render={routeProps => <NotFound {...data} />} />
+        <Route render={routeProps => <NotFound />} />
       </Switch>
     </Router>
   </Fragment>
