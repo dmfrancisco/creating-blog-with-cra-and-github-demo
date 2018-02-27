@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import base64 from "base-64";
 
+import snapshot from "./snapshot";
 import Comments from "./Comments";
 
 const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
@@ -65,7 +66,9 @@ export default class Post extends Component {
           dangerouslySetInnerHTML={{ __html: content }}
         />
 
-        <Comments gist={gist} />
+        <div id="comments-root" data-gist={gist} />
+
+        {!snapshot && <Comments gist={gist} />}
 
         <a href={`https://gist.github.com/${gist}#comments`}>
           Write a comment on GitHub

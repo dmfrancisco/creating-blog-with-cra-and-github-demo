@@ -10,6 +10,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-helmet": "^5.2.0",
+    "react-loadable": "^5.3.1",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
     "react-snap": "^1.11.4"
@@ -19,6 +20,8 @@
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build && react-snap",
+    "postbuild":
+      "sed -i '' 's/<link href=\"[^ ]*\" rel=\"preload\" as=\"script\">//g' $(find ./build -iname *.html)",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
