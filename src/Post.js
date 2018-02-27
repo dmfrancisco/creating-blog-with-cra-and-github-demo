@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import base64 from "base-64";
 
+import Comments from "./Comments";
+
 const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
 const headers = {
   Accept: "application/vnd.github.v3.json",
@@ -43,7 +45,7 @@ export default class Post extends Component {
   }
 
   render() {
-    const { date, title } = this.props;
+    const { date, title, gist } = this.props;
     const { content } = this.state;
 
     return (
@@ -62,6 +64,12 @@ export default class Post extends Component {
           className="markdown-body"
           dangerouslySetInnerHTML={{ __html: content }}
         />
+
+        <Comments gist={gist} />
+
+        <a href={`https://gist.github.com/${gist}#comments`}>
+          Write a comment on GitHub
+        </a>
       </Fragment>
     );
   }

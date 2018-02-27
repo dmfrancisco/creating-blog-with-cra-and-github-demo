@@ -28,7 +28,6 @@
   },
   "reactSnap": {
     "waitFor": 1000,
-    "preconnectThirdParty": false,
-    "removeScriptTags": true
+    "preconnectThirdParty": false
   }
 }
